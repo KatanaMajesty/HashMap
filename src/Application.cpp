@@ -14,13 +14,10 @@ struct Jedi
     Jedi() {}
     ~Jedi() = default;
 
-    // std::string name{};
-    char c = 1;
+    std::string name{};
     unsigned int padawanCount = 0;
     unsigned int saberColor = 0;
 };
-
-template<class T> bool HashTest();
 
 int main()
 {
