@@ -25,12 +25,11 @@ public:
     ~LinkedList()
     {
         Node* node = m_Head;
-        Node* prev = nullptr;
-        while (node)
+        while (m_Head)
         {
-            prev = node;
-            node = node->next;
-            delete prev;
+            node = m_Head;
+            m_Head = m_Head->next;
+            delete node;
         }
     }
 

@@ -2,6 +2,8 @@
 
 #include <util/Random.h>
 #include <HashMap.h>
+#include <HashMapLP.h>
+#include <HashMapDH.h>
 
 // STL includes
 #include <unordered_map>
@@ -15,7 +17,7 @@ struct Jedi;
 
 template<class T> bool HashTest()
 {
-    const int iters = 100'000'0;
+    const int iters = 500'000'0;
     const int keysAmount = iters * 1;
     // generate random keys:
     long long* keys = new long long[keysAmount];
@@ -33,18 +35,21 @@ template<class T> bool HashTest()
         keysToFind[i] = keys[Random::generateRandLong() % keysAmount];
     }
     // test my HashTable:
-    HashMap<T> hashTable;
+    HashMapDH<T> hashTable;
     clock_t myStart = clock();
     for (int i = 0; i < iters; i++)
     {
+    // std::cout << "Yes!" << std::endl;
         hashTable.Insert(keysToInsert[i], T());
     }
 
     int myInsertSize = hashTable.Size();
+    // std::cout << "\n\n\nDone Insert!\n\n" << std::endl;
     for (int i = 0; i < iters; i++)
     {
         hashTable.Erase(keysToErase[i]);
     }
+    // std::cout << "\n\n\nDone Erase!\n\n" << std::endl;
     int myEraseSize = hashTable.Size();
     int myFoundAmount = 0;
     // hashTable.print();

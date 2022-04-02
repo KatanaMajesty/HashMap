@@ -13,9 +13,10 @@ private:
     float m_LoadFactor;
     float m_LoadCapacity;
 
+private:
     size_t hash(unsigned long long key) const 
     {
-        return ((7 * key - 13) % 558249577) % m_Capacity;
+        return ((7 * key - 13) % 234755096012779) % m_Capacity;
     }
 
     void reallocate(float multiplier)
@@ -24,9 +25,8 @@ private:
             multiplier = 1.5f;
 
         // change capacity
-        size_t capacity = m_Capacity * multiplier;
         size_t prevCapacity = m_Capacity;
-        m_Capacity = capacity;
+        m_Capacity *= multiplier;
 
         LinkedList<T>* buckets = new LinkedList<T>[m_Capacity];
         
@@ -66,7 +66,7 @@ public:
     }
     ~HashMap()
     {
-
+        delete[] m_Buckets;
     }
 
     void Insert(unsigned long long key, const T& value)
@@ -86,14 +86,7 @@ public:
         m_Size++;
     }
 
-    const T* const Find(unsigned long long key) const
-    {
-        size_t index = hash(key);
-        LinkedList<T>& list = m_Buckets[index];
-        return list.Get(key);
-    }
-
-    T* const Find(unsigned long long key)
+    T* const Find(unsigned long long key) const
     {
         size_t index = hash(key);
         LinkedList<T>& list = m_Buckets[index];
