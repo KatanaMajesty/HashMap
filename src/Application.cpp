@@ -16,7 +16,7 @@ struct Jedi
     Jedi() {}
     ~Jedi() = default;
 
-    std::string name{};
+    char name = 1;
     unsigned int padawanCount = 0;
     unsigned int saberColor = 0;
 };
@@ -24,15 +24,5 @@ struct Jedi
 int main()
 {
     srand(time(nullptr));
-    // srand(0);
     HashTest<Jedi>();
-    // std::cout << HashMapDH<Jedi>::getNearestPrime(13) << std::endl;
-    // HashMapDH<Jedi> map;
-    // for (int i = 0; i < 100000; i++)
-    // {
-    //     map.Insert(Random::generateRandLong(), Jedi());
-    //     std::cout << "D" << std::endl;
-    // }
-
-    // std::cout << map.Size() << std::endl;
 }
