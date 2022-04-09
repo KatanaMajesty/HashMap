@@ -3,7 +3,7 @@
 #include <cmath>
 #include <random>
 
-namespace Random
+namespace util
 {
     // from 0 to 18 446 744 073 709 551 615
     unsigned long long generateRandLong()

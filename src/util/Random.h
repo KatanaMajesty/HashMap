@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Random
+namespace util
 {
     unsigned long long generateRandLong();
 }

@@ -8,13 +8,6 @@
 // STL includes
 #include <unordered_map>
 
-struct Timer
-{
-
-};
-
-struct Jedi;
-
 template<class T> bool HashTest()
 {
     const int iters = 500'000'0;
@@ -26,13 +19,13 @@ template<class T> bool HashTest()
     long long* keysToFind = new long long[iters];
     for (int i = 0; i < keysAmount; i++)
     {
-        keys[i] = Random::generateRandLong();
+        keys[i] = util::generateRandLong();
     }
     for (int i = 0; i < iters; i++)
     {
-        keysToInsert[i] = keys[Random::generateRandLong() % keysAmount];
-        keysToErase[i] = keys[Random::generateRandLong() % keysAmount];
-        keysToFind[i] = keys[Random::generateRandLong() % keysAmount];
+        keysToInsert[i] = keys[util::generateRandLong() % keysAmount];
+        keysToErase[i] = keys[util::generateRandLong() % keysAmount];
+        keysToFind[i] = keys[util::generateRandLong() % keysAmount];
     }
     // test my HashTable:
     HashMapDH<T> hashTable;
